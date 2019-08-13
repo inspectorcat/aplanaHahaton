@@ -30,10 +30,19 @@ public class Application {
         Yaml yaml = new Yaml(constructor);
         InputStream input = null;
 
+        // Maven run
         try {
-            input = new FileInputStream(new File("C:\\Users\\YMarkova\\Documents\\hahaton\\src\\main\\resources\\config.yml"));
+            input = new FileInputStream(new File("config.yml"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        }
+        // For local run change path
+        finally {
+            try {
+                input = new FileInputStream(new File("C:\\Users\\tmantashyan\\Desktop\\IDEA WorkFlow\\demo1\\src\\main\\resources\\config.yml"));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
 
         RedisConfig data = yaml.loadAs(input, RedisConfig.class);
