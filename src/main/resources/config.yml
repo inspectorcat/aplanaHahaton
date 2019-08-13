@@ -1,6 +1,0 @@
-host: localhost
-port: 6379
-maxTotal: 128
-maxIdle: 128
-minIdle: 16
-maxWaitMillis: 100

@@ -8,11 +8,11 @@ public class Loader {
 
     }
 
-    public static synchronized RedisConfig getConfig() {
+    public static RedisConfig getConfig() {
         return config;
     }
 
-    public static synchronized  void setConfig(RedisConfig map) {
+    public static void setConfig(RedisConfig map) {
         config = map;
     }
 }

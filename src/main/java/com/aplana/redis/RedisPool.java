@@ -7,7 +7,6 @@ import redis.clients.jedis.JedisPoolConfig;
 public class RedisPool {
     private static JedisPool redisPool;
 
-
     public static JedisPool getRedisPool() {
         return redisPool;
     }

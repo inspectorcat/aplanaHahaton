@@ -1,5 +1,8 @@
 package com.aplana.config;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+@ConfigurationProperties(prefix = "redis")
 public class RedisConfig {
 
     String host;

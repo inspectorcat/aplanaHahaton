@@ -3,11 +3,11 @@ package com.aplana.vin;
 import com.aplana.config.Loader;
 import com.aplana.redis.RedisPool;
 import org.apache.commons.lang3.RandomStringUtils;
-import redis.clients.jedis.*;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPoolConfig;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 
 public class GeneratorVin {
 
