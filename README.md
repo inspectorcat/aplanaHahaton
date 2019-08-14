@@ -5,7 +5,7 @@ Maven project SuperUltraVinGen 3000 - REST-сервис разработанны
   Для работы сервиса необходимо:
   <li>Удостовериться, что установлена Java версии 1.8.0 или выше;</li>
   <li>Развернуть <a href="https://github.com/microsoftarchive/redis" title="Redis GitHub">Redis</a>;</li>
-  <li>Подложить нашу <a href="https://github.com/inspectorcat/aplanaHahaton/releases" title="Тут лежит Джарка, конфиг и базёнка :)">базу данных</a> для Redis;</li>
+  <li>Подложить нашу базу данных <a href="https://github.com/inspectorcat/aplanaHahaton/releases" title="Тут лежит Джарка, конфиг и базёнка :)">dump.rdb</a>  для Redis;</li>
   <li>В файле <a href="https://github.com/inspectorcat/aplanaHahaton/releases" title="Тут лежит Джарка, конфиг и базёнка :)">application.properties</a> изменить следующие строки:
     <ul>
       <li>redis.host: localhost // Адрес хоста, на котором развернут Redis</li>
