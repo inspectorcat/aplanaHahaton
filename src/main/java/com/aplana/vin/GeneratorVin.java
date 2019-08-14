@@ -91,7 +91,7 @@ public class GeneratorVin {
 
     // Get data from redis
     private void getDateFromRedis() {
-        try(Jedis jedis = RedisPool.getRedisPool().getResource()) {
+        try (Jedis jedis = RedisPool.getRedisPool().getResource()) {
             String str = jedis.srandmember("testSet");
             String delimiter = ";";
             String[] subStr = str.split(delimiter);
@@ -150,7 +150,7 @@ public class GeneratorVin {
 
         int diff = weight - weight / 11 * 11;
         if (diff == 10) {
-            return  "X";
+            return "X";
         }
         return java.lang.String.valueOf(diff);
     }
