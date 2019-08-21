@@ -11,6 +11,7 @@ public class RedisConfig {
     int maxIdle;
     int minIdle;
     int maxWaitMillis;
+    String nameSet;
 
     public String getHost() {
         return host;
@@ -58,5 +59,13 @@ public class RedisConfig {
 
     public void setMaxWaitMillis(int maxWaitMillis) {
         this.maxWaitMillis = maxWaitMillis;
+    }
+
+    public String getNameSet() {
+        return nameSet;
+    }
+
+    public void setNameSet(String nameSet) {
+        this.nameSet = nameSet;
     }
 }

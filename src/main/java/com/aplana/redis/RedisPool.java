@@ -11,7 +11,6 @@ public class RedisPool {
         return redisPool;
     }
 
-
     public static void createRedisPool(JedisPoolConfig poolConfig) {
         redisPool= new JedisPool(poolConfig, Loader.getConfig().getHost(),Loader.getConfig().getPort());
     }

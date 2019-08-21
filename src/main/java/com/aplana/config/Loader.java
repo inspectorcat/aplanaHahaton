@@ -5,7 +5,6 @@ public class Loader {
     private static RedisConfig config;
 
     private Loader() {
-
     }
 
     public static RedisConfig getConfig() {

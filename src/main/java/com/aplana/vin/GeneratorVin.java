@@ -10,14 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class GeneratorVin {
-
-    private String wmi;
-    private String vds;
-    private String year;
-    private String serialNumber;
-
-    private static JedisPoolConfig poolConfig = new JedisPoolConfig();
-
+    private final static String REDIS_DELIMITER = ";";
     private static Map<String, Integer> map = new HashMap<>();
 
     // Map with bound of letters and numbers
@@ -47,58 +40,16 @@ public class GeneratorVin {
         map.put("Z", 9);
     }
 
-    public java.lang.String getWmi() {
-        return wmi;
-    }
-
-    public void setWmi(java.lang.String wmi) {
-        this.wmi = wmi;
-    }
-
-    public java.lang.String getVds() {
-        return vds;
-    }
-
-    public void setVds(java.lang.String vds) {
-        this.vds = vds;
-    }
-
-    public java.lang.String getYear() {
-        return year;
-    }
-
-    public void setYear(java.lang.String year) {
-        this.year = year;
-    }
-
-    public java.lang.String getSerialNumber() {
-        return serialNumber;
-    }
-
-    public void setSerialNumber(java.lang.String serialNumber) {
-        this.serialNumber = serialNumber;
-    }
-
     // Get Redis connection parameters from config and create connection
     public GeneratorVin() {
-        poolConfig.setMaxWaitMillis(Loader.getConfig().getMaxWaitMillis());
-        poolConfig.setMaxTotal(Loader.getConfig().getMaxTotal());
-        poolConfig.setMaxIdle(Loader.getConfig().getMaxIdle());
-        poolConfig.setMinIdle(Loader.getConfig().getMinIdle());
-        RedisPool.createRedisPool(poolConfig);
 
     }
 
     // Get data from redis
-    private void getDateFromRedis() {
+    private String[] getDateFromRedis() {
         try (Jedis jedis = RedisPool.getRedisPool().getResource()) {
-            String str = jedis.srandmember("testSet");
-            String delimiter = ";";
-            String[] subStr = str.split(delimiter);
-            this.wmi = subStr[0];
-            this.vds = subStr[1];
-            this.year = subStr[2];
-            this.serialNumber = generateSerialNumber();
+            String str = jedis.srandmember(Loader.getConfig().getNameSet());
+            return str.split(REDIS_DELIMITER);
         }
 
     }
@@ -109,24 +60,23 @@ public class GeneratorVin {
     }
 
     // Build VIN-number
-    public String getVin() {
-        StringBuilder vin = new StringBuilder();
-        getDateFromRedis();
-        vin.append(getWmi())
-                .append(getVds())
-                .append(calculateCheckDigit())
-                .append(getYear())
-                .append("A")
-                .append(getSerialNumber());
-        return vin.toString().toUpperCase();
+    public String generateVIN() {
+        VinNumber vinNumber = new VinNumber();
+        String[] data = getDateFromRedis();
+        vinNumber.setWmi(data[0]);
+        vinNumber.setVds(data[1]);
+        vinNumber.setYear(data[2]);
+        vinNumber.setSerialNumber(generateSerialNumber());
+        vinNumber.setCheckDigit(calculateCheckDigit(vinNumber));
+        return vinNumber.toString().toUpperCase();
     }
 
     // Calculate check digit -.-
-    private String calculateCheckDigit() {
-        char[] wmi = getWmi().toCharArray();
-        char[] vds = getVds().toCharArray();
-        char[] year = getYear().toCharArray();
-        char[] serialNumber = getSerialNumber().toCharArray();
+    private String calculateCheckDigit(VinNumber vinNumber) {
+        char[] wmi = vinNumber.getWmi().toCharArray();
+        char[] vds = vinNumber.getVds().toCharArray();
+        char[] year = vinNumber.getYear().toCharArray();
+        char[] serialNumber = vinNumber.getSerialNumber().toCharArray();
         int weight = 0;
 
         for (int i = 0; i < wmi.length; i++) {

@@ -1,0 +1,6 @@
+com\aplana\config\RedisConfig.class
+com\aplana\vin\VinController.class
+com\aplana\Application.class
+com\aplana\config\Loader.class
+com\aplana\redis\RedisPool.class
+com\aplana\vin\GeneratorVin.class
