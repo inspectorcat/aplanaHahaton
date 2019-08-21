@@ -1,13 +1,25 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
 <head>
     <title>Vin generator</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
+<style type="text/css">
+    #footer {
+        position: fixed;
+        left: 0; bottom: 0;
+        width: 100%;
+    }
+</style>
 <body>
     <span id="button" style="position:relative;z-index:10" onmouseOver="moveIt()" onfocus="moveIt(); this.blur()">
-        <button style="height:30px; width:150px;alignment: center" onmouseDown="moveIt()" onmouseover="moveIt()" onfocus="moveIt();this.blur()">Generate VIN</button>
+        <button style="height:30px;width:150px;" onmouseDown="moveIt()" onmouseover="moveIt()" onfocus="moveIt();this.blur()">Generate VIN</button>
     </span>
+    <div id="footer">
+        <h1>
+            <a href="/generatevin" style="position:relative;left:40%;color:#000000"> Перейти на REST-версию</a>
+        </h1>
+    </div>
     <script>
         function getObj(objID)
         {
@@ -16,13 +28,15 @@
             else if (document.layers) {return document.layers[objID];}
         }
 
+        var width=screen.width;
+        var height=screen.height;
         var ie4=document.all;
         var ns6=document.getElementById&&!document.all;
         cobj=getObj("button");
 
         function moveIt(){
-            y = Math.floor(Math.random() * 800);
-            x = Math.floor(Math.random() * 600);
+            y = Math.floor(Math.random() * (height - 200));
+            x = Math.floor(Math.random() * (width - 200));
             if (ie4){
                 cobj.style.top  = y;
                 cobj.style.left = x;
