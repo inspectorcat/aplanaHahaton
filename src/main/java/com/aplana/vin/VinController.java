@@ -32,6 +32,12 @@ public class VinController {
         return "trytogenerate";
     }
 
+    // Get request
+    @GetMapping("")
+    public String vinGuiRedirect() {
+        return "redirect:/trytogenerate";
+    }
+
 
     @PostConstruct
     public void init() {
