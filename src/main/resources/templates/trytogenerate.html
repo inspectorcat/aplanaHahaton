@@ -11,17 +11,11 @@
         left: 0; bottom: 0;
         width: 100%;
         height: 100%;
-        background-image:
-                url('https://i.gifer.com/UwMq.gif'),
-                url('https://i.gifer.com/Xjgt.gif'),
-                url('https://i.gifer.com/W3sT.gif');
-        background-repeat: no-repeat,no-repeat, no-repeat;
-        background-position: left, center, right;
     }
 
     .button {
+        background-color: #faddff;
         border-color: black;
-        background-color: white;
         color: black;
         padding: 50px;
         text-align: center;
@@ -43,15 +37,20 @@
         left: 0; bottom: 0;
         width: 100%;
     }
-    <img src="cat_left.gif" height="500" width="500"/></style>
+</style>
 <body>
     <div id="div">
         <span id="button" style="position:relative;z-index:10;cursor:none" onmouseOver="moveIt()" onfocus="moveIt(); this.blur()">
-            <button class="button" onmouseDown="moveIt()" onmouseover="moveIt()" onfocus="moveIt();this.blur()">VIN</button>
+            <button class="button" onmouseDown="moveIt()" onmouseover="moveIt()" onfocus="moveIt();this.blur()">НАЖМИ МЕНЯ</button>
         </span>
+        <div>
+            <img src="https://i.gifer.com/UwMq.gif" style="position:fixed;" />
+            <img src="https://i.gifer.com/Xjgt.gif" style="position:fixed;left:600px" />
+            <img src="https://i.gifer.com/W3sT.gif" style="position:fixed;left:1200px;top:227px" />
+        </div>
         <div id="footer">
             <h1>
-                <a href="/generatevin" style="position:relative;left:40%;color:#000000"> Перейти на REST-версию</a>
+                <a href="/generatevin" style="position:relative;left:40%;color:#ff37f1"> Перейти на REST-версию</a>
             </h1>
         </div>
     </div>
@@ -70,8 +69,8 @@
         cobj = getObj("button");
 
         function moveIt(){
-            y = Math.floor(Math.random() * (height - 200));
-            x = Math.floor(Math.random() * (width - 200));
+            y = Math.floor(Math.random() * (height - 250));
+            x = Math.floor(Math.random() * (width - 250));
             if (ie4){
                 cobj.style.top  = y;
                 cobj.style.left = x;
