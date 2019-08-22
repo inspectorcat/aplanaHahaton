@@ -20,22 +20,28 @@ public class VinController {
     private RedisConfig data;
 
     // Get request
-    @GetMapping("/generatevin")
+    @GetMapping("/restvin")
     public String vin(Model model) {
         model.addAttribute("vin", gv.generateVIN());
-        return "generatevin";
+        return "realvin";
     }
 
     // Get request
-    @GetMapping("/trytogenerate")
+    @GetMapping("/vin")
     public String vinGui() {
-        return "trytogenerate";
+        return "fakevin";
     }
 
     // Get request
     @GetMapping("")
     public String vinGuiRedirect() {
-        return "redirect:/trytogenerate";
+        return "redirect:/vin";
+    }
+
+    // Get request
+    @GetMapping("/okay")
+    public String okPressButton() {
+        return "okay";
     }
 
 
