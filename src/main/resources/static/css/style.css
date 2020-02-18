@@ -1,0 +1,56 @@
+#div {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.button {
+    background-color: #faddff;
+    border-color: black;
+    color: black;
+    padding: 50px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    margin: 4px 2px;
+    border-radius: 100%;
+}
+
+#cat1 {
+    position: fixed;
+}
+
+#cat2 {
+    position: fixed;
+    left: 600px;
+}
+
+#cat3 {
+    position: fixed;
+    left: 1200px;
+    top: 227px;
+}
+
+#button{
+    position: relative;
+    z-index: 10;
+    cursor: none;
+}
+
+#footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+#href {
+    text-decoration: none;
+    position: relative;
+    left: 40%;
+    color: #ff37f1;
+    font-style: italic;
+}

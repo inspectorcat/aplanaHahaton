@@ -1,0 +1,24 @@
+.cursor {
+    animation: animate 0.50s infinite;
+}
+
+@keyframes animate{
+    0%{
+        cursor: url("/cursor/cursorFrame_0.gif"), none;
+    }
+    20%{
+        cursor: url("/cursor/cursorFrame_1.gif"), none;
+    }
+    40%{
+        cursor: url("/cursor/cursorFrame_2.gif"), none;
+    }
+    60%{
+        cursor: url("/cursor/cursorFrame_3.gif"), none;
+    }
+    80%{
+        cursor: url("/cursor/cursorFrame_4.gif"), none;
+    }
+    100%{
+        cursor: url("/cursor/cursorFrame_5.gif"), none;
+    }
+}
